@@ -138,9 +138,12 @@ function loadQuestion() {
       options.forEach(btn => {
         btn.disabled = true;
         if (btn.textContent === correct) {
-          btn.style.backgroundColor = "#c8f7c5"; // green
+          // btn.style.backgroundColor = "#c8f7c5"; // green
+          btn.classList.add("correct"); // green
+
         } else {
-          btn.style.backgroundColor = "#f8d7da"; // red
+          // btn.style.backgroundColor = "#f8d7da"; // red
+          btn.classList.add("wrong"); // red
         }
       });
 
