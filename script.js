@@ -76,15 +76,45 @@ function setProgress(percent) {
   circle.style.strokeDashoffset = offset;
 }
 
+function shuffleArray(array) {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
+
 function loadQuestion() {
-  const q = questions[currentQuestion];
-  flagImg.src = q.flag;
+  
+  console.log(currentQuestion);
+  console.log(questions[currentQuestion]);
+  // const q = questions[currentQuestion];
+  // flagImg.src = q.flag;
   questionNum.textContent = `${currentQuestion + 1} of ${questions.length}`;
+
+  const question = questions[currentQuestion];
+  console.log(question);
+  document.getElementById("flag-image").src = question.flag;
+
+  // Shuffle and assign options
+  const shuffledOptions = shuffleArray(question.options);
+  const optionButtons = document.querySelectorAll(".option");
+  shuffledOptions.forEach((text, index) => {
+    const button = optionButtons[index];
+    button.textContent = text;
+    button.disabled = false;
+    // button.classList.remove("correct", "wrong");
+    button.className = "option"; // This resets styling
+  });
+
+/*
   q.options.forEach((opt, index) => {
     options[index].textContent = opt;
     options[index].disabled = false;
     options[index].style.backgroundColor = "#fff";
   });
+
+*/
 
   timeLeft = totalTime;
   timer.textContent = timeLeft;
@@ -189,12 +219,15 @@ options.forEach(button => {
     if (selected === correct) {
       score++;
       scoreDisplay.textContent = score;
-      button.style.backgroundColor = "#c8f7c5"; // green
+      // button.style.backgroundColor = "#c8f7c5"; // green
+      button.classList.add("correct"); // green
     } else {
-      button.style.backgroundColor = "#f8d7da"; // red
+      // button.style.backgroundColor = "#f8d7da"; // red
+      button.classList.add("wrong"); // red
       options.forEach(optBtn => {
         if (optBtn.textContent === correct) {
-          optBtn.style.backgroundColor = "#c8f7c5";
+          // optBtn.style.backgroundColor = "#c8f7c5";
+          optBtn.classList.add("correct");
         }
       });
     }
@@ -213,4 +246,4 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-loadQuestion();
+// loadQuestion();

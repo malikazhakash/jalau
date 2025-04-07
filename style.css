@@ -69,6 +69,23 @@ h1 {
   opacity: 0.8;
 }
 
+.option.correct {
+  background-color: #4caf50; /* green */
+  color: white;
+}
+
+.option.wrong {
+  background-color: #f44336; /* red */
+  color: white;
+}
+
+.option:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+
+
 /* Next Button */
 .quiz-container button#next-button {
   padding: 10px 20px;
