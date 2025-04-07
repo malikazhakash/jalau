@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flag Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Guess the Flag</h1>
+
+    <div class="top-bar">
+      <div>Question: <span id="question-number">1</span></div>
+      <div>Score: <span id="score">0</span></div>
+      <div class="progress-ring">
+        <svg width="60" height="60">
+          <circle id="ring-bg" r="26" cx="30" cy="30" />
+          <circle id="ring-progress" r="26" cx="30" cy="30" />
+        </svg>
+        <div id="timer">30</div>
+      </div>
+    </div>
+
+    <img id="flag-image" src="" alt="Flag" />
+
+    <div class="options">
+      <button class="option"></button>
+      <button class="option"></button>
+      <button class="option"></button>
+      <button class="option"></button>
+    </div>
+  </div>
+
+  <!-- End Quiz Modal -->
+  <div class="modal-overlay" id="endModal">
+    <div class="modal-content">
+      <h2>🎉 Quiz Complete!</h2>
+      <p id="final-score">Your score: 0 / 0</p>
+      <button onclick="location.reload()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
